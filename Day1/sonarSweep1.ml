@@ -1,4 +1,4 @@
-let file_name = "input1.txt";;
+let file_name = "input.txt";;
 
 let get_heights file =
 	let rec _get_heights file acc =

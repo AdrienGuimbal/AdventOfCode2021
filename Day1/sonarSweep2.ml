@@ -1,4 +1,4 @@
-let file_name = "input1.txt";;
+let file_name = "input.txt";;
 
 let get_sum_heights file =
 	let rec _get_sum_heights file a b acc =
@@ -24,6 +24,6 @@ let elevation lst =
 
 let main =
 	let file = open_in file_name in
-	(* let () = List.iter (Printf.printf "%d ") (get_sum_heights file) in *)
+	let () = List.iter (Printf.printf "%d ") (get_sum_heights file) in
 	get_sum_heights file |> elevation |> Printf.printf "Résultat : %i\n"
 ;;
