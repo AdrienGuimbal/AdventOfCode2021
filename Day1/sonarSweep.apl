@@ -1,5 +1,5 @@
 ⍝ dump input file input in "input" 
-input ← ⎕NGET'/home/adri/Programs/adventOfCode2021/Day1/input_apl.txt'
+input ← ' '(≠⊆⊢)⊃⎕NGET'/home/adri/Programs/adventOfCode2021/Day1/input_apl.txt' 1
 
 ⍝ solution function
 ⍝sol ← {+/(¯1↓(1⌽⍵)>⍵)}
