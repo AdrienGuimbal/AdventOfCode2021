@@ -24,12 +24,6 @@ typedef struct _p {
 	struct _p* next;
 } poly;
 
-typedef struct _i{
-	char to_insert;
-	poly* at;
-	struct _i* prev;
-} instruction_stack;
-
 void print_polymer (poly pol) {
 	for(poly* tdl = &pol ; tdl != NULL ; tdl = tdl->next) {
 		putchar(tdl->atom);
@@ -39,13 +33,6 @@ void print_polymer (poly pol) {
 
 void print_patern (patern ptr) {
 	printf("%c%c -> %c\n", ptr.p1, ptr.p2, ptr.insert);
-}
-
-void print_stack (instruction_stack* stack) {
-	while (stack != NULL) {
-		printf("insert %c between %c-%c\n", stack->to_insert, stack->at->atom, stack->at->next->atom);
-		stack = stack->prev;
-	}
 }
 
 void parsefile (patern paterns[NB_PATERN], poly* polymer) {
@@ -73,35 +60,6 @@ void parsefile (patern paterns[NB_PATERN], poly* polymer) {
 	}
 	fclose(file);
 }
-
-/*void polymerize(poly* polymer, patern paterns[NB_PATERN]) {
-	instruction_stack* stack = NULL;
-	instruction_stack* prevstack;
-	for (poly *tdl = polymer ; tdl->next != NULL ; tdl = tdl->next) {
-		//for (patern* pt = paterns ; pt < paterns + NB_PATERN ; pt++) {
-		for (int i = 0 ; i < NB_PATERN ; i++) {
-			if (paterns[i].p1 == tdl->atom && paterns[i].p2 == tdl->next->atom) {
-				prevstack = stack;
-				stack = malloc(sizeof(instruction_stack));
-				stack->prev      = prevstack;
-				stack->to_insert = paterns[i].insert;
-				stack->at        = tdl;
-			}
-		}
-	}
-
-	if (DEBUG) print_stack(stack);
-
-	for (instruction_stack* instruc = stack ; instruc != NULL ; instruc = prevstack) {
-		poly* nv = malloc(sizeof(poly));
-		nv->atom = instruc->to_insert;
-		nv->next = instruc->at->next;
-		instruc->at->next = nv;
-
-		prevstack = instruc->prev;
-		free(instruc);
-	}
-}*/
 
 void polymerize(poly* polymer, patern paterns[NB_PATERN]) {
 	for (poly *tdl = polymer ; tdl->next != NULL ; tdl = tdl->next) {
