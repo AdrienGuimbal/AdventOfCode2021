@@ -4,8 +4,10 @@ input ← ' '(≠⊆⊢)⊃⎕NGET'/home/adri/Programs/adventOfCode2021/Day1/inp
 ⍝ solution function
 ⍝sol ← {+/(¯1↓(1⌽⍵)>⍵)}
 
-sol ← {+/2</⍵}
-sol2 ← {+/2</3+/⍵}
+⍝sol ← {+/2</⍵}
+⍝sol2 ← {+/2</3+/⍵}
+sol  ← (+/2</⊢)
+sol2 ← (+/2</3+/⊢)
 
 sol input
 sol2 input
